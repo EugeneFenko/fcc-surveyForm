@@ -9,6 +9,7 @@
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+   @import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
 
 html {
     color: #222;
@@ -97,10 +98,134 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html, body {
+    overflow-x: hidden;
+    background-image: linear-gradient(90deg, #FF416C, #FF4B2B);
+    min-height: 100vh;
+    font-family: 'Lato', monospace;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+body {
+    display: grid;
+    grid-gap: 0;
+    grid-template-columns: 1fr minmax(450px, 1fr) 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: ". wrap .";
+    align-items: center; 
+}
+
+main {
+    grid-area: wrap;
+    display: inherit;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "header"
+        "form";
+    justify-items: center;
+    background: white;
+    border-radius: 6px;
+    padding: 20px;
+}
+main:hover {
+    box-shadow: 3px 3px 5px 1px #333;
+}
 
 
+header {
+    grid-area: header;
+    text-align: center;
+}
+
+form {
+    grid-area: form;
+    display: inherit;
+    grid-gap: 10px;
+    grid-template-rows: repeat(2,auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "left right" "comments comments";
+}
+
+.left-side {
+    grid-area: left;
+    display: inherit;
+    row-gap: 4px;
+    align-items: center;
+}
+
+.right-side {
+    grid-area: right;
+    display: inherit;
+    row-gap: 4px;
+    align-items: center;
+}
+
+.comments {
+    grid-area: comments;
+    display: inherit;
+    justify-content: center;
+}
 
 
+@media(max-width: 460px) {
+    body {
+        display: grid;
+        grid-gap: 0;
+        grid-template-columns: minmax(250px,1fr);
+        grid-template-rows: auto;
+        grid-template-areas: "wrap";
+        align-items: center;
+        padding: 2%; 
+    }
+
+    form {
+        grid-area: form;
+        display: inherit;
+        grid-gap: 10px;
+        grid-template-rows: repeat(2,auto);
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "left" "right" "comments";
+    }
+}
+
+input {
+    font-weight: 300;
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 0 5px;
+}
+
+input:active, input:focus {
+    border: none;
+    border-bottom: 2px solid orangered;
+    outline: none;
+}
+
+button {
+    border: none;
+    background: #444;
+    padding: 5px;
+    color: white;
+    font-weight: 300;
+}
+button:hover {
+    background: #222
+    ;
+}
+
+textarea {
+    outline: none;
+}
+
+select {
+    border: none;
+    outline: none;
+    font-weight: 300;
+}
 
 
 
